@@ -303,5 +303,25 @@ app.get('/buscar', async (req, res) => {
 
 app.listen(PORT, async () => {
     console.log(`\n🚀 SERVIDOR V30 LISTO: http://localhost:${PORT}`);
+    
+    // 1. Arranque inicial
     await iniciarSistema();
+
+    // 2. CICLO DE REINICIO (CADA 10 MINUTOS)
+    setInterval(async () => {
+        console.log("\n♻️ MANTENIMIENTO: Reiniciando navegador (Ciclo 10 min)...");
+
+        // A. Cerrar Navegador
+        if (globalBrowser) {
+            try { await globalBrowser.close(); } catch(e) { console.log("   ⚠️ Error cerrando (ignorable)."); }
+            globalBrowser = null;
+            mainPage = null;
+        }
+
+        // B. Volver a Iniciar (Abre y Loguea)
+        console.log("   🔄 Re-iniciando sistema...");
+        await iniciarSistema();
+        console.log("   ✅ Mantenimiento finalizado.");
+
+    }, 600000); // 600,000 ms = 10 minutos exactos
 });
