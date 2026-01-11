@@ -323,5 +323,5 @@ app.listen(PORT, async () => {
         await iniciarSistema();
         console.log("   ✅ Mantenimiento finalizado.");
 
-    }, 600000); // 600,000 ms = 10 minutos exactos
+    }, 900000); // 900,000 ms = 15 minutos exactos
 });
