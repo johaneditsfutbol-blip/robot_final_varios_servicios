@@ -4,9 +4,9 @@ const puppeteer = require('puppeteer');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// ==========================================
+// =========================================
 // CONFIGURACIÓN
-// ==========================================
+// =========================================
 const CONFIG = {
     urlLogin: "https://administrativo.icarosoft.com/",
     urlLista: "https://administrativo.icarosoft.com/Listado_clientes_tickets/",
